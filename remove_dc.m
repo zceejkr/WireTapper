@@ -1,6 +1,8 @@
+% Removes the DC bias in the signal
+
 function [signal] = remove_dc (signal)
 
-    S=round(sum(signal)/length(signal));
-    signal = signal - S;
+    mean =round(sum(signal)/length(signal));
+    signal = signal - mean;
     
 end

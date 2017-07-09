@@ -1,13 +1,18 @@
 function [tel_number] = find_numbers (signal, Fs, ptp)
 
+% Params to seperate the pulses. 
 sled_size = 80;
 power_value = sled_size*0.1*((ptp/2)^2);
+
+%Init state.
 on_number = 0;
 start_num = 1;
 end_num = 1;
 tel_number (1) = 0;
 current_number = 1;
 
+% Slides a sled through the signal. It detects pulses
+% by measuring the total power in the sled.
 for i = 1:(length(signal)-(sled_size+5))
     sled = signal(i:(i+sled_size-1));
     if (sum((sled.^2)) > power_value) & (on_number == 0)

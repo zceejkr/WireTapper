@@ -47,39 +47,4 @@ analogIn = analogIn*5/1023; % convert in to Volts
 signal = analogIn;
 Fs = round(1/sampleTime);
 
-% %fourier transform
-% Fs = 1/sampleTime; %sample frequency
-% nsamples = numel(analogIn); %number of samples
-% freqs = (0:nsamples/2 -1)*Fs/nsamples;
-% yfft = abs(fft(analogIn)); yfft = yfft(1:nsamples/2);
-% yfft(yfft==0) = 1e-20; 
-% logyfft = 20*log10(yfft);
-% 
-% %get dominant frequency
-% dominantf = freqs(logyfft == max(logyfft));
-% disp(['dominant frequncy = ', num2str(dominantf), 'Hz']);
-% 
-% %plot spectrum
-% figure (1), clf reset;
-% plot(freqs, logyfft , 'color', 'b', 'Marker', '.', 'Linewidth' , 2, 'Linestyle', '-');
-% ylabel('|Amplitude| (dB)', 'Fontsize',14);
-% xlabel('Frequncy (Hz)', 'Fontsize',14);
-% ylim([-50, 65]);
-% grid on;
-% set(gca,'Fontsize',12)
-% set (gcf,'Position', [427  150   650   500])
-% print('-dpng', 'arduino-spectrum.png');
-% hold off;
-% 
-% %plot time base
-% figure (2), clf reset;
-% plot(time(1:25)*1e-3, analogIn(1:25), 'color', 'b', 'Marker', '.', 'Linewidth' , 2, 'Linestyle', '-');
-% ylabel('Amplitude (V)', 'Fontsize',14);
-% xlabel('Time (ms)', 'Fontsize',14);
-% grid on;
-% set(gca,'Fontsize',12)
-% set (gcf,'Position', [427   150   650   500])
-% print('-dpng', 'arduino-timebase.png');
-% hold off;
-
 end
